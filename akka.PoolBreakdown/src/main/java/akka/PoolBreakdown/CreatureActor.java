@@ -1,5 +1,6 @@
 package akka.PoolBreakdown;
 
+import Stimuli.StimulusMessage;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
@@ -8,7 +9,7 @@ import akka.actor.UntypedActor;
 public class CreatureActor extends UntypedActor {
 	public void onReceive(Object message) {
 		System.out.println(message.toString());
-		if (message instanceof SMSMessage) {
+		if (message instanceof StimulusMessage) {
 			// System.out.println( "My message is: " + ( ( MyMessage )message
 			// ).getMessage() );
 			System.out.println(message);
