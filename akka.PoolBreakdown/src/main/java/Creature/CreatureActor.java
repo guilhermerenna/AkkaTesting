@@ -4,10 +4,12 @@ import Stimuli.*;
 import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.actor.UntypedActor;
+import akka.routing.RoundRobinRouter;
 
 public class CreatureActor extends UntypedActor {
-	private final ActorRef mouth = getContext().actorOf(Props.create(MouthActor.class),"mouth");
-	private final ActorRef nose = getContext().actorOf(Props.create(NoseActor.class));
+	private final ActorRef mouth = getContext().actorOf(new Props(MouthActor.class).withRouter(new RoundRobinRouter(5)),"mouth");
+	private final ActorRef nose = getContext().actorOf(new Props(NoseActor.class).withRouter(new RoundRobinRouter(5)),"nose");
+	private final ActorRef eye = getContext().actorOf(new Props(EyeActor.class).withRouter(new RoundRobinRouter(5)),"eye");
 	
 	
 	@Override
@@ -15,25 +17,28 @@ public class CreatureActor extends UntypedActor {
 		if(arg0 instanceof SmellStimulusMessage) {
 			System.out.println("Smell stimulus received. Forwarding to nose...");
 			nose.tell(arg0);
+		} else if(arg0 instanceof LuminousStimulusMessage) {
+			System.out.println(this.getSelf().toString()+": Luminous stimulus received. Forwarding to eye...");
+			eye.tell(arg0);
 		} else if(arg0 instanceof PheromoneStimulusMessage) {
-			System.out.println("Pheromone stimulus received. Forwarding to nose...");
+			System.out.println(this.getSelf().toString()+": Pheromone stimulus received. Forwarding to nose...");
 			nose.tell(arg0);
 		} else if(arg0 instanceof SpikeStimulusMessage) {
-			System.out.println("Spike stimulus received. Forwarding to nose...");
+			System.out.println(this.getSelf().toString()+": Spike stimulus received. Forwarding to nose...");
 			mouth.tell(arg0);
 		} else if(arg0 instanceof TickleStimulusMessage) {
-			System.out.println("Tickle stimulus received. Forwarding to nose...");
+			System.out.println(this.getSelf().toString()+": Tickle stimulus received. Forwarding to nose...");
 			mouth.tell(arg0);
 		} else if(arg0 instanceof EnergeticStimulusMessage) {
-			System.out.println("Energetic stimulus received. Forwarding to nose...");
+			System.out.println(this.getSelf().toString()+": Energetic stimulus received. Forwarding to nose...");
 			mouth.tell(arg0);
 		} else if(arg0 instanceof MechanicalStimulusMessage) {
-			System.out.println("Mechanical stimulus received. Forwarding to nose...");
+			System.out.println(this.getSelf().toString()+": Mechanical stimulus received. Forwarding to nose...");
 			mouth.tell(arg0);
 		} if(arg0 instanceof StimulusMessage) {
-			System.out.println("Unknown stimulus received. Discarding... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
+			System.out.println(this.getSelf().toString()+": Unknown stimulus received. Discarding... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 		} else {
-			throw new Exception("Message type not supported.");
+			throw new Exception(this.getSelf().toString()+": Message type not supported.");
 		}
 		
 	}
