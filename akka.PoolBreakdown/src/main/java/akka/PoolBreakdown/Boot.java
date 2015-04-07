@@ -16,7 +16,7 @@ public class Boot {
 		ActorRef creature2 = actorSystem.actorOf(
 				new Props(CreatureActor.class), "creature2");
 		ActorRef fruit = actorSystem.actorOf(
-				new Props(CreatureActor.class), "fruit1");
+				new Props(FruitActor.class), "fruit1");
 		// actorRef.tell( new MyMessage( "Hello, Akka!" ) );
 		creature1.tell(new LuminousStimulusMessage("~le image of creature 2"));
 		creature2.tell(new LuminousStimulusMessage("~le image of a fruit!"));

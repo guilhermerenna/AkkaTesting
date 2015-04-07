@@ -18,28 +18,28 @@ public class CreatureActor extends UntypedActor {
 	@Override
 	public void onReceive(Object arg0) throws Exception {
 		if(arg0 instanceof SmellStimulusMessage) {
-			System.out.println("Smell stimulus received. Forwarding to nose...");
+			System.out.println("Smell stimulus received. Forwarding to nose... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			nose.tell(arg0);
 		} else if(arg0 instanceof LuminousStimulusMessage) {
-			System.out.println(this.getSelf().toString()+": Luminous stimulus received. Forwarding to eye...");
+			System.out.println(this.getSelf().toString()+": Luminous stimulus received. Forwarding to eye... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			eye.tell(arg0);
 		} else if(arg0 instanceof PheromoneStimulusMessage) {
-			System.out.println(this.getSelf().toString()+": Pheromone stimulus received. Forwarding to nose...");
+			System.out.println(this.getSelf().toString()+": Pheromone stimulus received. Forwarding to nose... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			nose.tell(arg0);
 		} else if(arg0 instanceof SpikeStimulusMessage) {
-			System.out.println(this.getSelf().toString()+": Spike stimulus received. Forwarding to nose...");
+			System.out.println(this.getSelf().toString()+": Spike stimulus received. Forwarding to nose... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			mouth.tell(arg0);
 		} else if(arg0 instanceof TickleStimulusMessage) {
-			System.out.println(this.getSelf().toString()+": Tickle stimulus received. Forwarding to nose...");
+			System.out.println(this.getSelf().toString()+": Tickle stimulus received. Forwarding to nose... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			mouth.tell(arg0);
 		} else if(arg0 instanceof EnergeticStimulusMessage) {
-			System.out.println(this.getSelf().toString()+": Energetic stimulus received. Forwarding to nose...");
+			System.out.println(this.getSelf().toString()+": Energetic stimulus received. Forwarding to nose... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			mouth.tell(arg0);
 		} else if(arg0 instanceof MechanicalStimulusMessage) {
-			System.out.println(this.getSelf().toString()+": Mechanical stimulus received. Forwarding to nose...");
+			System.out.println(this.getSelf().toString()+": Mechanical stimulus received. Forwarding to nose... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			mouth.tell(arg0);
 		} if(arg0 instanceof StimulusMessage) {
-			System.out.println(this.getSelf().toString()+": Unknown stimulus received.\n"+((StimulusMessage)arg0).getMessage()+"\nDiscarding... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
+			System.out.println(this.getSelf().toString()+": Unknown stimulus received from "+getSender().toString()+".\n"+((StimulusMessage)arg0).getMessage()+"\nDiscarding... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 		} else {
 			throw new Exception(this.getSelf().toString()+": Message type not supported.");
 		}
