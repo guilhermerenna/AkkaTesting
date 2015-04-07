@@ -16,7 +16,7 @@ public class MouthActor extends UntypedActor {
 		} else if(arg0 instanceof MechanicalStimulusMessage) {
 			System.out.println("Mechanical stimulus received. Ref.: " + ((MechanicalStimulusMessage) arg0).getSequenceNumber());
 		} else if(arg0 instanceof StimulusMessage) {
-			System.out.println("Unknown stimulus received. Discarding ref. " + ((StimulusMessage) arg0).getMessage());
+			System.out.println("Unknown stimulus received.\n"+((StimulusMessage)arg0).getMessage()+"\nDiscarding ref. " + ((StimulusMessage) arg0).getMessage());
 		} else {
 			throw new Exception("Message type not supported.");
 		}

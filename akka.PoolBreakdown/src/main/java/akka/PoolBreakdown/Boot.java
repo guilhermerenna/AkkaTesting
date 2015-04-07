@@ -1,6 +1,5 @@
 package akka.PoolBreakdown;
 
-import Creature.CreatureActor;
 import Stimuli.*;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
@@ -22,7 +21,7 @@ public class Boot {
 		creature1.tell(new LuminousStimulusMessage("~le image of creature 2"));
 		creature2.tell(new LuminousStimulusMessage("~le image of a fruit!"));
 		fruit.tell(new TouchStimulusMessage("--touched--"), creature1);
-		fruit.tell(new DestructiveStimulusMessage("--touched--"), creature1);
+		fruit.tell(new DestructiveStimulusMessage("--touched again--"), creature1);
 	}
 
 }

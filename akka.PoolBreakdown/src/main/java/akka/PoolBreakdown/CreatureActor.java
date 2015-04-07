@@ -1,5 +1,8 @@
-package Creature;
+package akka.PoolBreakdown;
 
+import Creature.EyeActor;
+import Creature.MouthActor;
+import Creature.NoseActor;
 import Stimuli.*;
 import akka.actor.ActorRef;
 import akka.actor.Props;
@@ -36,7 +39,7 @@ public class CreatureActor extends UntypedActor {
 			System.out.println(this.getSelf().toString()+": Mechanical stimulus received. Forwarding to nose...");
 			mouth.tell(arg0);
 		} if(arg0 instanceof StimulusMessage) {
-			System.out.println(this.getSelf().toString()+": Unknown stimulus received. Discarding... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
+			System.out.println(this.getSelf().toString()+": Unknown stimulus received.\n"+((StimulusMessage)arg0).getMessage()+"\nDiscarding... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 		} else {
 			throw new Exception(this.getSelf().toString()+": Message type not supported.");
 		}

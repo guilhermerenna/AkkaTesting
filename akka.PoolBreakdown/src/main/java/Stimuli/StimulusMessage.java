@@ -1,6 +1,6 @@
 package Stimuli;
 
-public class StimulusMessage {
+public abstract	class StimulusMessage {
 	private static int counter = 0; 
 	private final int sequenceNumber;
 	private String text;

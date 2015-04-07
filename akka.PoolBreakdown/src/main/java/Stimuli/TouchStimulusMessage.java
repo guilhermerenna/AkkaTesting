@@ -1,6 +1,6 @@
 package Stimuli;
 
-public class TouchStimulusMessage extends StimulusMessage {
+public final class TouchStimulusMessage extends StimulusMessage {
 	private static int counter = 0; 
 	private final int energeticSequenceNumber;
 	private String text;
