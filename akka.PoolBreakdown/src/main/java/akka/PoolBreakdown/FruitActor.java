@@ -10,8 +10,7 @@ public class FruitActor extends UntypedActor {
 		if(arg0 instanceof LuminousStimulusMessage) {
 			System.out.println(this.getSelf().toString()+"A can see something! "+((LuminousStimulusMessage) arg0).getMessage()+"! Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 		} else if(arg0 instanceof TouchStimulusMessage) {
-			System.out.println(this.getSelf().toString()+"Something toched me! Touching back... "+((TouchStimulusMessage) arg0).getMessage()+"! Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
-			getSender().tell(new TouchStimulusMessage("Touching you back, "+getSender().toString()),this.getSelf());
+			System.out.println(this.getSelf().toString()+": "+getSender().toString()+" toched me! Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 		} else if(arg0 instanceof DestructiveStimulusMessage) {
 			System.out.println(this.getSelf().toString()+"Destructive stimulus?! Bye, bye, world! Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			//TODO destruct itself.

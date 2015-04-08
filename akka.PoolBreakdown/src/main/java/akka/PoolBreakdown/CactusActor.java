@@ -12,6 +12,7 @@ public class CactusActor extends UntypedActor {
 		} else if(arg0 instanceof TouchStimulusMessage) {
 			System.out.println(this.getSelf().toString()+": "+getSender().toString()+" toched me! Spiking it back! =P Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			getSender().tell(new SpikeStimulusMessage("Don't touch me! I am a cactus!"),this.getSelf());
+			getSender().forward(new SpikeStimulusMessage("Don't touch me! I am a cactus!"),this.context());
 		} else if(arg0 instanceof StimulusMessage) {
 			System.out.println("Unknown stimulus received.\n"+((StimulusMessage)arg0).getMessage()+"\nDiscarding ref. " + ((StimulusMessage) arg0).getMessage());
 		} else {

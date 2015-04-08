@@ -10,10 +10,6 @@ public class SpikeStimulusMessage extends StimulusMessage {
 		this.spikeSequenceNumber = counter;
 		counter++;
 	}
-
-	public String getMessage() {
-		return this.text;
-	}
 	
 	public int getSequenceNumber() {
 		return this.spikeSequenceNumber;

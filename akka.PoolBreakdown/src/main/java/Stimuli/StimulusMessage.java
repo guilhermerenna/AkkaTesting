@@ -6,7 +6,6 @@ public abstract	class StimulusMessage {
 	private String text;
 	
 	public StimulusMessage(String text) {
-		super();
 		this.text = text;
 		this.sequenceNumber = counter;
 		counter++;

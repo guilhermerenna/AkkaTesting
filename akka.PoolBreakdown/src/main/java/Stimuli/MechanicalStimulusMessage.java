@@ -3,16 +3,11 @@ package Stimuli;
 public class MechanicalStimulusMessage extends StimulusMessage {
 	private static int counter = 0; 
 	private final int mechanicalSequenceNumber;
-	private String text;
 	
 	public MechanicalStimulusMessage(String text) {
 		super(text);
 		this.mechanicalSequenceNumber = counter;
 		counter++;
-	}
-
-	public String getMessage() {
-		return this.text;
 	}
 	
 	public int getSequenceNumber() {

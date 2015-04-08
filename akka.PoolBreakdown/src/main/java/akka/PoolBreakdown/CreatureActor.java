@@ -27,19 +27,21 @@ public class CreatureActor extends UntypedActor {
 			System.out.println(this.getSelf().toString()+": Pheromone stimulus received. Forwarding to nose... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			nose.tell(arg0);
 		} else if(arg0 instanceof SpikeStimulusMessage) {
-			System.out.println(this.getSelf().toString()+": Spike stimulus received. Forwarding to nose... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
+			System.out.println(this.getSelf().toString()+": Spike stimulus received. Forwarding to mouth... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			mouth.tell(arg0);
 		} else if(arg0 instanceof TickleStimulusMessage) {
-			System.out.println(this.getSelf().toString()+": Tickle stimulus received. Forwarding to nose... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
+			System.out.println(this.getSelf().toString()+": Tickle stimulus received. Forwarding to mouth... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			mouth.tell(arg0);
 		} else if(arg0 instanceof EnergeticStimulusMessage) {
-			System.out.println(this.getSelf().toString()+": Energetic stimulus received. Forwarding to nose... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
+			System.out.println(this.getSelf().toString()+": Energetic stimulus received. Forwarding to mouth... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			mouth.tell(arg0);
 		} else if(arg0 instanceof MechanicalStimulusMessage) {
-			System.out.println(this.getSelf().toString()+": Mechanical stimulus received. Forwarding to nose... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
+			System.out.println(this.getSelf().toString()+": Mechanical stimulus received. Forwarding to mouth... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
 			mouth.tell(arg0);
-		} if(arg0 instanceof StimulusMessage) {
+		} else if(arg0 instanceof StimulusMessage) {
 			System.out.println(this.getSelf().toString()+": Unknown stimulus received from "+getSender().toString()+".\n"+((StimulusMessage)arg0).getMessage()+"\nDiscarding... Ref.: " + ((StimulusMessage) arg0).getSequenceNumber());
+		} else if (arg0 instanceof String) {
+			System.out.println("Text message received: "+arg0.toString());
 		} else {
 			throw new Exception(this.getSelf().toString()+": Message type not supported.");
 		}

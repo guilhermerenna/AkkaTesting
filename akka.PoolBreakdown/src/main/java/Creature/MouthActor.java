@@ -8,7 +8,7 @@ public class MouthActor extends UntypedActor {
 	@Override
 	public void onReceive(Object arg0) throws Exception {
 		if(arg0 instanceof SpikeStimulusMessage) {
-			System.out.println(this.getSelf().toString()+"Ouch! A spike! Ref.: " + ((SpikeStimulusMessage) arg0).getSequenceNumber());
+			System.out.println(this.getSelf().toString()+"Ouch! A spike!"+getSender().toString()+" Ref.: " + ((SpikeStimulusMessage) arg0).getSequenceNumber());
 		} else if(arg0 instanceof TickleStimulusMessage) {
 			System.out.println(this.getSelf().toString()+"Tickle stimulus received. Ref.: " + ((TickleStimulusMessage) arg0).getSequenceNumber());
 		} else if(arg0 instanceof EnergeticStimulusMessage) {
